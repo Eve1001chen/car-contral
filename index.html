@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ESP8266 控制頁面</title>
+  <style>
+    body { 
+      text-align: center; 
+      font-family: Arial, sans-serif; 
+      margin-top: 50px; 
+    }
+    button { 
+      margin: 10px; 
+      padding: 15px 30px; 
+      font-size: 18px; 
+      background-color: #007BFF; 
+      color: white; 
+      border: none; 
+      border-radius: 5px; 
+      cursor: pointer; 
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    button:hover { 
+      background-color: #0056b3; 
+    }
+  </style>
+</head>
+<body>
+  <h1>ESP8266 遙控器</h1>
+  <button onclick="sendRequest('/forward')">前進</button>
+  <button onclick="sendRequest('/backward')">後退</button><br>
+  <button onclick="sendRequest('/left')">左轉</button>
+  <button onclick="sendRequest('/right')">右轉</button><br>
+  <button onclick="sendRequest('/stop')">停止</button>
+
+  <script>
+    function sendRequest(path) {
+      fetch(path)
+        .then(response => console.log(`${path} - ${response.status}`))
+        .catch(err => console.error('Error:', err));
+    }
+  </script>
+</body>
+</html>
