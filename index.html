@@ -7,30 +7,49 @@
       text-align: center; 
       font-family: Arial, sans-serif; 
       margin-top: 50px; 
+      background-color: #121212; 
+      color: #ffffff; 
     }
     button { 
       margin: 10px; 
       padding: 15px 30px; 
       font-size: 18px; 
-      background-color: #007BFF; 
-      color: white; 
+      background-color: #c0c0c0; /* 銀色 */
+      color: black; 
       border: none; 
       border-radius: 5px; 
       cursor: pointer; 
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); 
+      transition: background-color 0.3s ease;
     }
     button:hover { 
-      background-color: #0056b3; 
+      background-color: #001f3f; /* 深藍色 */
+      color: white; /* 滑鼠懸停時文字顏色改為白色 */
+    }
+    .control-container { 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      gap: 20px; 
+    }
+    .horizontal-buttons { 
+      display: flex; 
+      justify-content: center; 
+      gap: 20px; 
     }
   </style>
 </head>
 <body>
   <h1>ESP8266 遙控器</h1>
-  <button onclick="sendRequest('/forward')">前進</button>
-  <button onclick="sendRequest('/backward')">後退</button><br>
-  <button onclick="sendRequest('/left')">左轉</button>
-  <button onclick="sendRequest('/right')">右轉</button><br>
-  <button onclick="sendRequest('/stop')">停止</button>
+  <div class="control-container">
+    <button onclick="sendRequest('/forward')">前進</button>
+    <div class="horizontal-buttons">
+      <button onclick="sendRequest('/left')">左轉</button>
+      <button onclick="sendRequest('/stop')">停止</button>
+      <button onclick="sendRequest('/right')">右轉</button>
+    </div>
+    <button onclick="sendRequest('/backward')">後退</button>
+  </div>
 
   <script>
     function sendRequest(path) {
